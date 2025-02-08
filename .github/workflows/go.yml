@@ -1,0 +1,27 @@
+name: Go Build Windows
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+      
+      - name: Build
+        run: make build
+      
+      - name: Release
+        run: make release
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plaid-cli-windows
+          path: bin/plaid-cli.exe
