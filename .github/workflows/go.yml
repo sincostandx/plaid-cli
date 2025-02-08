@@ -17,9 +17,6 @@ jobs:
       - name: Build
         run: make build
       
-      - name: Release
-        run: make release
-      
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
